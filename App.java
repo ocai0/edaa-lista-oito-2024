@@ -6,21 +6,23 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        String caminhoArquivo = "estudantes_una_2024.csv";
         try {
-            File arquivo = new File("estudantes_una_2024.csv");
+            File arquivo = new File(caminhoArquivo);
             Scanner scanner = new Scanner(arquivo);
             scanner.useDelimiter("\n");
             scanner.next();
             ArrayList<String> nomes = new ArrayList<String>();
-            while(scanner.hasNext())
+            while (scanner.hasNext())
                 nomes.add(scanner.next());
             Collections.sort(nomes);
             System.out.println("Ordenando Estudantes por nome:");
-            for(String nome : nomes) System.out.printf("Nome: %s\n", nome);
+            for (String nome : nomes)
+                System.out.printf("Nome: %s\n", nome);
             scanner.close();
-        }
-        catch(FileNotFoundException error) {
+        } catch (FileNotFoundException error) {
             System.err.println("O arquivo não foi encontrado");
+            System.err.println("Caminho do arquivo: " + caminhoArquivo);
         }
     }
 }
